@@ -19,15 +19,23 @@ from rest_framework.authtoken.views import obtain_auth_token
 from kennywoodapi.models import *
 from kennywoodapi.views import ParkAreas, register_user, login_user, Attractions, ItineraryItems
 
+# * You must always register the routes
 router = routers.DefaultRouter(trailing_slash=False)
 router.register(r'parkareas', ParkAreas, 'parkarea')
 router.register(r'attractions', Attractions, 'attraction')
 router.register(r'itineraryitems', ItineraryItems, 'itinerary')
 
+# TODO: add parkarea url path
+# TODO: add attractions url path
+# TODO: add itineraryitems url path
+
 urlpatterns = [
     path('', include(router.urls)),
     path('register', register_user),
     path('login', login_user),
+    path('attractions', Attractions),
+    path('parkareas', ParkAreas),
+    path('itinerary', ItineraryItems),
     path('api-token-auth', obtain_auth_token),
     path('api-auth', include('rest_framework.urls', namespace='rest_framework')),
 ]
